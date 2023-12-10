@@ -18,6 +18,9 @@ module.exports = {
         audiowide: ["'Audiowide', cursive"],
         spacegrotesk: ["'Space Grotesk', sans-serif"],
       },
+      screens: {
+        responsive: "1100px",
+      },
     },
   },
   plugins: [],

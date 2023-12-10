@@ -5,6 +5,7 @@ class Coin {
   public image: string;
   public currentPrice: string;
   public priceChange: number;
+  public marketCap: number;
 
   constructor(
     id: string,
@@ -12,7 +13,8 @@ class Coin {
     name: string,
     image: string,
     currentPrice: string,
-    priceChange: number
+    priceChange: number,
+    marketCap: number
   ) {
     this.id = id;
     this.symbol = symbol;
@@ -20,5 +22,6 @@ class Coin {
     this.image = image;
     this.currentPrice = currentPrice;
     this.priceChange = priceChange;
+    this.marketCap = marketCap;
   }
 }

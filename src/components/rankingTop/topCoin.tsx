@@ -4,31 +4,48 @@ interface TopCoinProps {
 }
 
 const TopCoin = ({ coin }: TopCoinProps) => {
+  function getReadableNumber(number: number, places: number = 2): string {
+    if (number >= 1e9) {
+      return `${Math.round((number / 10 ** 9) * places) / places}B`;
+    }
+    if (number >= 1e6) {
+      return `${Math.round((number / 10 ** 6) * places) / places}M`;
+    }
+    if (number >= 1e3) {
+      return `${Math.round((number / 10 ** 3) * places) / places}K`;
+    }
+
+    return number.toFixed(2).toString();
+  }
+
   return (
     <div key={`top-coin-${coin.name}`} className="flex flex-col items-center">
       <img
         src={coin.image}
         alt={`crypto-${coin.name}`}
-        width={90}
-        height={90}
+        className="w-24 max-md:w-16"
       />
       <div className="flex items-center mt-4">
-        <span className="text-white mr-1 font-bold text-2xl font-spacegrotesk">
+        <span className="text-white mr-1 font-bold text-2xl font-spacegrotesk max-md:text-lg">
           {coin.name}
         </span>
         <span
           className={`ml-1 ${
             coin.priceChange < 0 ? "text-red-600" : "text-green-600"
-          } text-lg font-semibold font-spacegrotesk`}
+          } text-lg font-semibold font-spacegrotesk hidden responsive:inline-block`}
         >
           {coin.priceChange}
         </span>
       </div>
-      <span className="text-white font-bold text-2xl mt-1 font-spacegrotesk">
-        €{" "}
-        {Number(coin.currentPrice) % 1 > 0
-          ? coin.currentPrice
-          : `${coin.currentPrice}.00`}
+      <span
+        className={`ml-1 ${
+          coin.priceChange < 0 ? "text-red-600" : "text-green-600"
+        } text-lg font-semibold font-spacegrotesk responsive:hidden inline-block`}
+      >
+        {coin.priceChange}
+      </span>
+      <span className="text-white font-bold text-2xl mt-1 font-spacegrotesk max-md:text-lg">
+        € {getReadableNumber(Number(coin.currentPrice))}
       </span>
     </div>
   );

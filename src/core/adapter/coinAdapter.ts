@@ -5,6 +5,7 @@ class CoinAdapter {
   private image: string;
   private currentPrice: string;
   private priceChange: number;
+  private marketCap: number;
 
   constructor(data: any) {
     this.id = data.id ? data.id : "id";
@@ -17,6 +18,7 @@ class CoinAdapter {
     this.priceChange = data.price_change_percentage_24h
       ? data.price_change_percentage_24h
       : "priceChange";
+    this.marketCap = data.market_cap ? data.market_cap : "No Market Cap";
   }
 
   public adapt(data: any) {
@@ -26,7 +28,8 @@ class CoinAdapter {
       this.name,
       this.image,
       this.currentPrice,
-      this.priceChange
+      this.priceChange,
+      this.marketCap
     );
   }
 }

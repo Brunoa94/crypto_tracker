@@ -38,8 +38,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="body-full w-screen h-screen bg-gradient-to-b from-indigo-900 to-slate-950">
-        <Navbar />
+      <body className="body-full w-screen bg-gradient-to-b to-indigo-950 from-slate-950 h-screen overflow-y-hidden">
         {children}
       </body>
     </html>
