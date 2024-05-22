@@ -14,7 +14,7 @@ function Navbar(props: NavbarProps) {
   }, [props.scrolled]);
 
   return (
-    <nav className="fixed top-0 bg-transparent flex bg-amber-700 w-full h-14 items-center px-8 pt-4">
+    <nav className="relative py-4 top-0 bg-transparent flex bg-amber-700 w-full items-center px-8">
       <Image
         src={"/bitcoin.svg"}
         alt="bitcoin-icon"
@@ -35,7 +35,7 @@ function Navbar(props: NavbarProps) {
           </span>
         ))}
       </div>
-      <div className="flex max-responsive:ml-auto">
+      <div className="hidden md:flex max-responsive:ml-auto">
         <BsTwitter className="h-8 w-8 text-white" />
         <BsDiscord className="h-8 w-8 text-white ml-6" />
         <BsTelegram className="h-8 w-8 text-white ml-6" />
